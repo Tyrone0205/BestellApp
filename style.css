@@ -519,3 +519,24 @@ footer {
     font-size: 18px;
     font-weight: 700;
 }
+
+/*BUY NOW BUTTON*/
+.buy-now-btn {
+    margin-top: 8px;
+    width: 100%;
+    min-height: 52px;
+
+    border: none;
+    border-radius: 999px;
+
+    background-color: rgb(241, 121, 28);
+    color: rgb(255, 255, 255);
+
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.buy-now-btn:hover {
+    opacity: 0.9;
+}
