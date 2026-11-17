@@ -14,22 +14,3 @@ function renderMeals() {
         mealContainerRef.insertAdjacentHTML('beforeend', getMealTemplate(meal));
     }
 }
-
-// Erstellt das HTML-Template für eine Gerichtskarte.
-function getMealTemplate(meal) {
-    return `<article class="meal-card">
-                <img class="meal-card-image"
-                    src="${meal.picture}"
-                    alt="${meal.name}">
-
-                <div class="meal-card-info">
-                    <h3>${meal.name}</h3>
-                    <p>${meal.description}</p>
-                </div>
-
-                <div class="meal-card-order">
-                    <span class="meal-price">${meal.price.toFixed(2).replace('.', ',')}€</span>
-                    <button type="button">Add to basket</button>
-                </div>
-            </article>`;
-}
