@@ -453,3 +453,23 @@ footer {
     flex-direction: column;
     gap: 12px;
 }
+
+/**/
+.basket-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.basket-item-top h3 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.basket-item-price {
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+}
