@@ -152,3 +152,184 @@ body {
     line-height: 1.2;
     text-align: center;
 }
+
+/* SPEISEKARTE */
+
+.menu-section {
+    width: 100%;
+}
+
+/* KATEGORIE-ÜBERSCHRIFT */
+
+.meal-category-heading {
+    width: 100%;
+    min-height: 96px;
+    background-color: var(--primary-color);
+}
+
+.meal-category-heading-content {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 96px;
+    margin: 0 auto;
+    padding-left: 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.meal-category-heading-content img {
+    width: 88px;
+    height: 91px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.meal-category-heading h2 {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+/* GERICHTELISTE */
+
+.meal-list {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 0 56px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* GERICHTSKARTE */
+
+.meal-card {
+    width: 100%;
+    max-width: 720px;
+    min-height: 141px;
+    padding: 10px;
+
+    display: flex;
+    gap: 15px;
+
+    background-color: rgb(253, 234, 220);
+    border-radius: 12px;
+}
+
+/* GERICHTSBILD */
+
+.meal-card-image {
+    width: 207px;
+    height: 121px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+/* GERICHTSINFORMATIONEN */
+
+.meal-card-info {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meal-card-info h3 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.meal-card-info p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* PREIS UND BESTELLBUTTON */
+
+.meal-card-order {
+    flex: 0 0 115px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.meal-price {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.meal-card-order button {
+    padding: 5px 8px;
+    width: 130px;
+
+    border: none;
+    border-radius: 20px;
+
+    background-color: var(--background-color);
+    color: var(--text-primary);
+
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.meal-card-order button:hover {
+    color: var(--primary-color);
+}
+
+
+/* FOOTER */
+
+footer {
+    width: 100%;
+    height: 128px;
+    background-color: var(--primary-color);
+}
+
+.footer-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+.footer-content p,
+.footer-content a,
+.footer-content button {
+    color: var(--text-secondary);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.footer-content a {
+    text-decoration: none;
+}
+
+.footer-content button {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.footer-content a:hover,
+.footer-content button:hover {
+    text-decoration: underline;
+}
