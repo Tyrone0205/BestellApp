@@ -14,3 +14,6 @@ function renderMeals() {
         mealContainerRef.insertAdjacentHTML('beforeend', getMealTemplate(meal));
     }
 }
+
+// Rendert die Gerichte, sobald das HTML-Dokument vollständig aufgebaut ist.
+document.addEventListener('DOMContentLoaded', renderMeals);
