@@ -333,3 +333,19 @@ footer {
 .footer-content button:hover {
     text-decoration: underline;
 }
+
+/**/
+
+.menu-and-basket {
+    display: flex;
+    align-items: flex-start;
+}
+
+.menu-section {
+    flex: 1;
+    min-width: 0;
+}
+
+.basket-wrapper {
+    flex: 0 0 435px;
+}
