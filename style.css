@@ -206,3 +206,18 @@ body {
     align-items: flex-start;
     gap: 16px;
 }
+
+/* GERICHTSKARTE */
+
+.meal-card {
+    width: 100%;
+    max-width: 720px;
+    min-height: 141px;
+    padding: 10px;
+
+    display: flex;
+    gap: 15px;
+
+    background-color: rgb(253, 234, 220);
+    border-radius: 12px;
+}
