@@ -473,3 +473,19 @@ footer {
     font-weight: 700;
     white-space: nowrap;
 }
+
+/**/
+.basket-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.basket-quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 16px;
+    font-weight: 700;
+}
