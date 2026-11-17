@@ -540,3 +540,8 @@ footer {
 .buy-now-btn:hover {
     opacity: 0.9;
 }
+
+/*Utility-Class to hide html-elements*/
+.d_none {
+    display: none;
+}
