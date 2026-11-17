@@ -258,7 +258,7 @@ body {
 /* PREIS UND BESTELLBUTTON */
 
 .meal-card-order {
-    flex: 0 0 115px;
+    flex: 0 0 130px;
 
     display: flex;
     flex-direction: column;
@@ -338,7 +338,7 @@ footer {
 
 .menu-and-basket {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 .menu-section {
@@ -356,9 +356,9 @@ footer {
     position: sticky;
     top: 24px;
 
-    width: 435px;
-    min-height: 794px;
-    max-height: calc(100dvh - 48px);
+    width: 100%;
+    /* Maximal 794px hoch, bei kleineren Viewports entsprechend kleiner. */
+    height: min(794px, calc(100dvh - 48px));
 
     padding: 48px 24px 32px;
 
@@ -411,7 +411,8 @@ footer {
 /**/
 .basket-content {
     width: 100%;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
 
     display: flex;
     flex-direction: column;
@@ -425,6 +426,8 @@ footer {
     flex-direction: column;
     gap: 12px;
 
+    flex: 1;
+    min-height: 0;
     max-height: 340px;
     overflow-y: auto;
 
@@ -493,6 +496,7 @@ footer {
 /**/
 .basket-summary {
     width: 100%;
+    flex-shrink: 0;
 
     display: flex;
     flex-direction: column;
@@ -544,4 +548,14 @@ footer {
 /*Utility-Class to hide html-elements*/
 .d_none {
     display: none;
+}
+
+
+/* Orange Hintergrundfarbe über die gesamte Bildschirmbreite */
+.site-header,
+.meal-category-heading,
+footer {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 0 100vmax var(--primary-color);
+    clip-path: inset(0 -100vmax);
 }
