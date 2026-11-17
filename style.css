@@ -192,3 +192,17 @@ body {
     font-weight: 700;
     color: var(--text-secondary);
 }
+
+/* GERICHTELISTE */
+
+.meal-list {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 0 56px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
