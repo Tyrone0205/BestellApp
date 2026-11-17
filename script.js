@@ -1,3 +1,5 @@
+let basket = [];
+
 // Rendert sämtliche Gerichte anhand ihres Typs in den passenden HTML-Container.
 function renderMeals() {
     const mealTypes = ['burger', 'pizza', 'salad'];
@@ -13,6 +15,22 @@ function renderMeals() {
 
         mealContainerRef.insertAdjacentHTML('beforeend', getMealTemplate(meal));
     }
+}
+
+// Fügt ein Gericht zum Warenkorb hinzu oder erhöht dessen Anzahl.
+function addToBasket(mealIndex) {
+    const existingMeal = basket.find(item => item.mealIndex === mealIndex);
+
+    if (existingMeal) {
+        existingMeal.quantity++;
+    } else {
+        basket.push({
+            mealIndex: mealIndex,
+            quantity: 1
+        });
+    }
+
+    updateBasketView();
 }
 
 // Rendert die Gerichte, sobald das HTML-Dokument vollständig aufgebaut ist.
