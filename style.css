@@ -254,3 +254,38 @@ body {
     font-weight: 500;
     line-height: 1.2;
 }
+
+/* PREIS UND BESTELLBUTTON */
+
+.meal-card-order {
+    flex: 0 0 115px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.meal-price {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.meal-card-order button {
+    padding: 5px 8px;
+
+    border: none;
+    border-radius: 20px;
+
+    background-color: var(--background-color);
+    color: var(--text-primary);
+
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.meal-card-order button:hover {
+    color: var(--primary-color);
+}
