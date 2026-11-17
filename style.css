@@ -1,0 +1,10 @@
+/* Globale Farbvariablen */
+
+:root {
+    --primary-color: rgb(235, 105, 24);
+    --text-primary: rgb(54, 53, 52);
+    --text-secondary: rgb(255, 255, 255);
+    --background-color: rgb(255, 255, 255);
+    --rating-background: rgb(250, 202, 172);
+    --logo-border: rgb(253, 234, 220);
+}
