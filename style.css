@@ -418,3 +418,15 @@ footer {
     justify-content: space-between;
     gap: 24px;
 }
+
+/**/
+.basket-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    max-height: 340px;
+    overflow-y: auto;
+
+    padding-right: 8px;
+}
