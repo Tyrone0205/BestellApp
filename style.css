@@ -158,3 +158,37 @@ body {
 .menu-section {
     width: 100%;
 }
+
+/* KATEGORIE-ÜBERSCHRIFT */
+
+.meal-category-heading {
+    width: 100%;
+    min-height: 96px;
+    background-color: var(--primary-color);
+}
+
+.meal-category-heading-content {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 96px;
+    margin: 0 auto;
+    padding-left: 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.meal-category-heading-content img {
+    width: 88px;
+    height: 91px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.meal-category-heading h2 {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
