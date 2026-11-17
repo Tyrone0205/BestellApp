@@ -33,5 +33,19 @@ function addToBasket(mealIndex) {
     updateBasketView();
 }
 
+// Wechselt zwischen leerem und gefülltem Warenkorb.
+function updateBasketView() {
+    const basketEmptyRef = document.querySelector('.basket-empty');
+    const basketContentRef = document.querySelector('.basket-content');
+
+    if (basket.length === 0) {
+        basketEmptyRef.classList.remove('d_none');
+        basketContentRef.classList.add('d_none');
+    } else {
+        basketEmptyRef.classList.add('d_none');
+        basketContentRef.classList.remove('d_none');
+    }
+}
+
 // Rendert die Gerichte, sobald das HTML-Dokument vollständig aufgebaut ist.
 document.addEventListener('DOMContentLoaded', renderMeals);
