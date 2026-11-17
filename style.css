@@ -349,3 +349,26 @@ footer {
 .basket-wrapper {
     flex: 0 0 435px;
 }
+
+/**/
+
+.basket {
+    position: sticky;
+    top: 24px;
+
+    width: 435px;
+    min-height: 794px;
+    max-height: calc(100dvh - 48px);
+
+    padding: 48px 24px 32px;
+
+    background-color: rgb(54, 53, 52);
+    color: rgb(253, 234, 220);
+
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
