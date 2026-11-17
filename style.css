@@ -135,6 +135,10 @@ body {
     font-weight: bold;
 }
 
+.restaurant-rating span:first-child {
+    transform: translateY(-1.5px);
+}
+
 .rating-count {
     font-weight: normal;
 }
