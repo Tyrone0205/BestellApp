@@ -430,3 +430,13 @@ footer {
 
     padding-right: 8px;
 }
+
+/**/
+.basket-items::-webkit-scrollbar {
+    width: 4px;
+}
+
+.basket-items::-webkit-scrollbar-thumb {
+    background-color: rgb(253, 234, 220);
+    border-radius: 10px;
+}
