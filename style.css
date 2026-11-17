@@ -138,3 +138,13 @@ body {
 .rating-count {
     font-weight: normal;
 }
+
+/* Restaurantbeschreibung */
+
+.restaurant-description {
+    margin-top: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+}
