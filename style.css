@@ -221,3 +221,13 @@ body {
     background-color: rgb(253, 234, 220);
     border-radius: 12px;
 }
+
+/* GERICHTSBILD */
+
+.meal-card-image {
+    width: 207px;
+    height: 121px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
