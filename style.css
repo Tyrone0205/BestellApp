@@ -231,3 +231,26 @@ body {
     border-radius: 12px;
     flex-shrink: 0;
 }
+
+/* GERICHTSINFORMATIONEN */
+
+.meal-card-info {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meal-card-info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.meal-card-info p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+}
