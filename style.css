@@ -666,6 +666,13 @@ footer {
     animation: order-dialog-fade-in 250ms ease-out;
 }
 
+/* HINTERGRUND ABDUNKELN */
+
+.order-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
 /* UTILITY-KLASSE ZUM AUSBLENDEN VON HTML-ELEMENTEN */
 
 .d_none {
