@@ -22,6 +22,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-primary);
     font-family: Arial, Helvetica, sans-serif;
+    padding-top: 128px;
 }
 
 .page-container {
@@ -32,12 +33,28 @@ body {
 
 /* HEADER */
 
+
+/* FIXED HEADER */
+
 .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    width: 100%;
     height: 128px;
+
     background-color: var(--primary-color);
 }
 
 .header-content {
+    position: relative;
+
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -55,6 +72,72 @@ body {
     width: 45px;
     height: 35px;
     object-fit: contain;
+}
+
+
+/* HAMBURGER-MENÜ */
+
+.menu-dropdown {
+    position: relative;
+}
+
+/* ANKLICKBARER HAMBURGER-BEREICH */
+
+.menu-dropdown summary {
+    display: flex;
+    align-items: center;
+
+    list-style: none;
+    cursor: pointer;
+}
+
+/* STANDARD-PFEIL VON DETAILS ENTFERNEN */
+
+.menu-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+/* AUSKLAPPBARE KATEGORIE-NAVIGATION */
+
+.category-nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    width: 260px;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    background-color: var(--primary-color);
+    border-radius: 0 0 16px 16px;
+}
+
+/* NAVIGATIONS-LINKS */
+
+.category-nav a {
+    padding: 12px;
+
+    color: var(--text-secondary);
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+
+    border-radius: 8px;
+}
+
+.category-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* FOKUS FÜR DIE TASTATURBEDIENUNG */
+
+.menu-dropdown summary:focus-visible,
+.category-nav a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
 }
 
 /* HERO SECTION */
@@ -158,6 +241,13 @@ body {
 .menu-section {
     width: 100%;
 }
+
+/* ABSTAND BEIM SPRINGEN ZU EINER KATEGORIE */
+
+.meal-category {
+    scroll-margin-top: 144px;
+}
+
 
 /* KATEGORIE-ÜBERSCHRIFT */
 
@@ -354,10 +444,10 @@ footer {
 
 .basket {
     position: sticky;
-    top: 24px;
+    top: 144px;
 
     width: 100%;
-    height: min(794px, calc(100dvh - 48px));
+    height: min(794px, calc(100dvh - 160px));
 
     padding: 48px 24px 32px;
 
@@ -763,7 +853,6 @@ footer {
 
 /* ORANGE HINTERGRÜNDE ÜBER DIE GESAMTE BILDSCHIRMBREITE */
 
-.site-header,
 .meal-category-heading,
 footer {
     background-color: var(--primary-color);
