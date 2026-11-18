@@ -79,6 +79,33 @@ function renderBasket() {
     updateBasketView();
 }
 
+
+/* Erhöht oder verringert die Anzahl eines Gerichts. */
+function changeBasketQuantity(mealIndex, change) {
+    const basketItem = basket.find(item => item.mealIndex === mealIndex);
+
+    if (!basketItem) {
+        return;
+    }
+
+    basketItem.quantity += change;
+
+    if (basketItem.quantity <= 0) {
+        removeFromBasket(mealIndex);
+        return;
+    }
+
+    renderBasket();
+}
+
+/* Entfernt ein Gericht vollständig aus dem Warenkorb. */
+function removeFromBasket(mealIndex) {
+    basket = basket.filter(item => item.mealIndex !== mealIndex);
+
+    renderBasket();
+}
+
+
 // Rendert die Gerichte, sobald das HTML-Dokument vollständig aufgebaut ist.
 document.addEventListener('DOMContentLoaded', () => {
     renderMeals();
