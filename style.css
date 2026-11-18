@@ -695,6 +695,17 @@ footer {
     outline-offset: 3px;
 }
 
+/* BESTÄTIGUNGSINHALT */
+
+.order-dialog-content {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+}
+
 /* UTILITY-KLASSE ZUM AUSBLENDEN VON HTML-ELEMENTEN */
 
 .d_none {
