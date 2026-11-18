@@ -1,3 +1,4 @@
+
 let basket = [];
 let orderDialogTimeout;
 const orderDialogRef = document.getElementById('order-dialog');
@@ -79,6 +80,8 @@ function renderBasket() {
     renderBasketItems();
     updateBasketPrices();
     updateBasketView();
+    updateBasketItemsHeight();
+    updateMobileBasketCount();
 }
 
 // Erhöht oder verringert die Anzahl eines Gerichts.
@@ -109,9 +112,12 @@ function confirmOrder() {
         return;
     }
 
+    closeMobileBasket();
     orderDialogRef.showModal();
+
     basket = [];
     renderBasket();
+
     orderDialogTimeout = setTimeout(closeOrderDialog, 10000);
 }
 
@@ -143,10 +149,115 @@ function handleOrderDialogClick(event) {
     }
 }
 
+// Öffnet den mobilen Warenkorb als Dialog.
+function openMobileBasket() {
+    const dialogRef = document.getElementById('mobile-basket-dialog');
+    const basketRef = document.querySelector('.basket');
+
+    dialogRef.appendChild(basketRef);
+    dialogRef.showModal();
+}
+
+// Schließt den mobilen Warenkorb.
+function closeMobileBasket() {
+    const dialogRef = document.getElementById('mobile-basket-dialog');
+
+    if (dialogRef.open) {
+        dialogRef.close();
+    }
+}
+
+// Verschiebt den Warenkorb zurück in seine Desktop-Spalte.
+function restoreBasket() {
+    const basketRef = document.querySelector('.basket');
+    document.querySelector('.basket-wrapper').appendChild(basketRef);
+    scheduleBasketHeightUpdate();
+}
+
+// Schließt den Dialog beim Klicken außerhalb.
+function handleMobileBasketClick(event) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const outsideX = event.clientX < rect.left || event.clientX > rect.right;
+    const outsideY = event.clientY < rect.top || event.clientY > rect.bottom;
+
+    if (outsideX || outsideY) {
+        closeMobileBasket();
+    }
+}
+
+// Registriert die Events des mobilen Warenkorbs.
+function initializeMobileBasket() {
+    const dialogRef = document.getElementById('mobile-basket-dialog');
+
+    document.getElementById('mobile-basket-button').addEventListener('click', openMobileBasket);
+    document.getElementById('mobile-basket-close').addEventListener('click', closeMobileBasket);
+
+    dialogRef.addEventListener('close', restoreBasket);
+    dialogRef.addEventListener('click', handleMobileBasketClick);
+}
+
+// Aktualisiert die Anzahl im mobilen Warenkorb-Icon.
+function updateMobileBasketCount() {
+    const count = basket.reduce((total, item) => total + item.quantity, 0);
+    const countRef = document.getElementById('mobile-basket-count');
+
+    countRef.textContent = count;
+    countRef.classList.toggle('d_none', count === 0);
+}
+
+// Berechnet die Gesamthöhe der ersten drei Warenkorb-Karten.
+function calculateBasketItemsHeight(items, gap) {
+    let height = 0;
+
+    for (const item of items) {
+        height += item.offsetHeight;
+    }
+
+    return height + Math.max(items.length - 1, 0) * gap;
+}
+
+// Passt den Scrollbereich an maximal drei vollständige Gerichte an.
+function updateBasketItemsHeight() {
+    const basketItemsRef = document.querySelector('.basket-items');
+
+    if (basketItemsRef.offsetWidth === 0) return;
+
+    const items = Array.from(basketItemsRef.children).slice(0, 3);
+    const gap = parseFloat(getComputedStyle(basketItemsRef).rowGap) || 0;
+    const height = calculateBasketItemsHeight(items, gap);
+
+    basketItemsRef.style.maxHeight = `${height}px`;
+}
+
+// Aktualisiert die Warenkorb-Scrollhöhe im nächsten Animationsframe.
+function scheduleBasketHeightUpdate() {
+    requestAnimationFrame(updateBasketItemsHeight);
+}
+
+// Schließt den mobilen Warenkorb beim Wechsel zum Desktop.
+function handleDesktopBreakpointChange(event) {
+    if (event.matches) {
+        closeMobileBasket();
+    }
+}
+
+// Registriert die Events für das responsive Warenkorb-Layout.
+function initializeResponsiveBasketEvents() {
+    const desktopBreakpoint = window.matchMedia('(min-width: 901px)');
+
+    desktopBreakpoint.addEventListener('change', handleDesktopBreakpointChange);
+    window.addEventListener('resize', scheduleBasketHeightUpdate);
+
+    document.getElementById('mobile-basket-dialog')
+        .addEventListener('toggle', scheduleBasketHeightUpdate);
+}
+
 // Initialisiert die Website und registriert die Event-Listener.
 function initializeApp() {
     renderMeals();
     renderBasket();
+    initializeMobileBasket();
+    initializeResponsiveBasketEvents();
 
     document.getElementById('basket-buy-btn').addEventListener('click', confirmOrder);
     document.getElementById('order-dialog-close-id').addEventListener('click', closeOrderDialog);

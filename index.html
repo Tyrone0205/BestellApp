@@ -20,6 +20,9 @@
     <!-- UTILITY STYLES -->
     <link rel="stylesheet" href="./styles/utilities.css">
 
+    <!-- RESPONSIVE DESIGN -->
+    <link rel="stylesheet" href="./styles/responsive.css">
+
     <link rel="shortcut icon" href="./assets/icons/Logo 02.svg" type="image/svg">
 
     <script src="./scripts/db.js" defer></script>
@@ -28,7 +31,7 @@
 </head>
 
 <body>
-    <div class="page-container">
+    <div id="top" class="page-container">
 
         <!-- HEADER -->
         <header class="site-header">
@@ -70,6 +73,26 @@
 
 
             </div>
+            <!-- KATEGORIE-NAVIGATION FÜR GRÖSSERE MOBILE-ANSICHTEN -->
+
+            <nav class="category-nav" aria-label="Meal categories">
+
+                <a href="#burger-category">
+                    <img src="./assets/img/burger_picture.png" alt="">
+                    Burger & Sandwiches
+                </a>
+
+                <a href="#pizza-category">
+                    <img src="./assets/img/pizza_picture.png" alt="">
+                    Pizza (30cm)
+                </a>
+
+                <a href="#salad-category">
+                    <img src="./assets/img/salat_picture.png" alt="">
+                    Salad
+                </a>
+
+            </nav>
         </header>
         <main>
             <!-- HERO SECTION -->
@@ -230,7 +253,6 @@
             </div>
         </footer>
 
-
         <!-- BESTELLBESTÄTIGUNG -->
         <dialog id="order-dialog" class="order-dialog" aria-labelledby="order-dialog-heading"
             aria-describedby="order-dialog-description">
@@ -255,8 +277,44 @@
 
         </dialog>
 
-
     </div>
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+
+        <!-- HOME -->
+        <a href="#top" class="mobile-nav-item" aria-label="Back to top">
+            <img src="./assets/icons/home.svg" alt="">
+        </a>
+
+        <span class="mobile-nav-item" aria-hidden="true">
+            <img src="./assets/icons/person.svg" alt="">
+        </span>
+
+        <span class="mobile-nav-item" aria-hidden="true">
+            <img src="./assets/icons/takeout_dining_2.svg" alt="">
+        </span>
+
+        <!-- BASKET -->
+        <button id="mobile-basket-button" class="mobile-nav-item" type="button" aria-label="Open basket"
+            aria-haspopup="dialog" aria-controls="mobile-basket-dialog">
+
+            <img src="./assets/img/shopping_cart.png" alt="">
+
+            <span id="mobile-basket-count" class="mobile-basket-count d_none" aria-hidden="true">0</span>
+        </button>
+
+    </nav>
+
+    <!-- MOBILE BASKET DIALOG -->
+    <dialog id="mobile-basket-dialog" class="mobile-basket-dialog" aria-labelledby="basket-heading">
+
+        <button id="mobile-basket-close" class="mobile-basket-close" type="button" aria-label="Close basket">
+            ×
+        </button>
+
+    </dialog>
+
 </body>
 
 </html>
