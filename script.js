@@ -143,6 +143,15 @@ function handleOrderDialogClick(event) {
     }
 }
 
+/* Öffnet den mobilen Warenkorb als Dialog. */
+function openMobileBasket() {
+    const dialogRef = document.getElementById('mobile-basket-dialog');
+    const basketRef = document.querySelector('.basket');
+
+    dialogRef.appendChild(basketRef);
+    dialogRef.showModal();
+}
+
 // Initialisiert die Website und registriert die Event-Listener.
 function initializeApp() {
     renderMeals();
