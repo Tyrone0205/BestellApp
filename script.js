@@ -178,6 +178,17 @@ function handleMobileBasketClick(event) {
     }
 }
 
+/* Registriert die Events des mobilen Warenkorbs. */
+function initializeMobileBasket() {
+    const dialogRef = document.getElementById('mobile-basket-dialog');
+
+    document.getElementById('mobile-basket-button').addEventListener('click', openMobileBasket);
+    document.getElementById('mobile-basket-close').addEventListener('click', closeMobileBasket);
+
+    dialogRef.addEventListener('close', restoreBasket);
+    dialogRef.addEventListener('click', handleMobileBasketClick);
+}
+
 // Initialisiert die Website und registriert die Event-Listener.
 function initializeApp() {
     renderMeals();
