@@ -13,7 +13,7 @@ function renderMeals() {
 
         const mealContainerRef = document.getElementById(`${meal.type}-list`);
 
-        mealContainerRef.insertAdjacentHTML('beforeend', getMealTemplate(meal));
+        mealContainerRef.insertAdjacentHTML('beforeend', getMealTemplate(meal, mealIndex));
     }
 }
 
