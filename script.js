@@ -47,5 +47,37 @@ function updateBasketView() {
     }
 }
 
+/* Formatiert einen Preis in Euro. */
+function formatPrice(price) {
+    return price.toFixed(2).replace('.', ',') + '€';
+}
+
+/* Rendert sämtliche Gerichte im Warenkorb. */
+function renderBasket() {
+    const basketItemsRef = document.querySelector('.basket-items');
+
+    basketItemsRef.innerHTML = '';
+
+    let subtotal = 0;
+
+    for (let basketIndex = 0; basketIndex < basket.length; basketIndex++) {
+        const basketItem = basket[basketIndex];
+        const meal = meals[basketItem.mealIndex];
+
+        basketItemsRef.innerHTML += getBasketItemTemplate(basketItem);
+
+        subtotal += meal.price * basketItem.quantity;
+    }
+
+    const deliveryFee = 4.99;
+    const total = subtotal + deliveryFee;
+
+    document.getElementById('basket-subtotal').textContent = formatPrice(subtotal);
+    document.getElementById('basket-total').textContent = formatPrice(total);
+    document.getElementById('basket-buy-btn').textContent = `Buy now (${formatPrice(total)})`;
+
+    updateBasketView();
+}
+
 // Rendert die Gerichte, sobald das HTML-Dokument vollständig aufgebaut ist.
 document.addEventListener('DOMContentLoaded', renderMeals);
