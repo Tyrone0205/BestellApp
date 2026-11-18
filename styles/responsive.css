@@ -1,8 +1,10 @@
+/* MOBILE NAVIGATION AUF DESKTOP AUSBLENDEN */
 
-/* =========================================
-   TABLET DESIGN
-   786px - 1220px
-========================================= */
+.mobile-nav {
+    display: none;
+}
+
+/* TABLET DESIGN 786px - 1220px*/
 
 @media screen and (min-width: 786px) and (max-width: 1220px) {
 
@@ -78,10 +80,7 @@
 }
 
 
-/* =========================================
-   MOBILE DESIGN
-   Bis 785px
-========================================= */
+/* MOBILE DESIGN Bis 785px */
 
 @media screen and (max-width: 785px) {
 
@@ -258,4 +257,104 @@
     .order-dialog-text p {
         font-size: 20px;
     }
+
+
+    /* PLATZ FÜR DIE MOBILE NAVIGATION */
+
+    body {
+        padding-bottom: 72px;
+    }
+
+    /* HAMBURGER-MENÜ AUF MOBILE AUSBLENDEN */
+
+    .menu-dropdown {
+        display: none;
+    }
+
+    /* FIXIERTE MOBILE NAVIGATION */
+
+    .mobile-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1200;
+
+        width: 100%;
+        min-height: 64px;
+        padding: 8px 12px max(8px, env(safe-area-inset-bottom));
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        background-color: var(--text-primary);
+        border-radius: 16px 16px 0 0;
+    }
+
+    /* EINZELNE NAVIGATIONS-ELEMENTE */
+
+    .mobile-nav-item {
+        position: relative;
+
+        flex: 1;
+        min-width: 0;
+        min-height: 48px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 8px;
+        border: none;
+
+        background: transparent;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* NAVIGATIONS-ICONS */
+
+    .mobile-nav-item img {
+        width: 26px;
+        height: 26px;
+        object-fit: contain;
+    }
+
+    /* WARENKORB-ANZAHL */
+
+    .mobile-basket-count {
+        position: absolute;
+        top: 0;
+        right: calc(50% - 28px);
+
+        min-width: 20px;
+        height: 20px;
+        padding: 0 4px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 50%;
+
+        background-color: var(--primary-color);
+        color: var(--text-secondary);
+
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    /* ANZAHL AUSBLENDEN, WENN WARENKORB LEER IST */
+
+    .mobile-basket-count.d_none {
+        display: none;
+    }
+
+    /* TASTATURFOKUS */
+
+    .mobile-nav-item:focus-visible {
+        outline: 2px solid var(--primary-color);
+        outline-offset: -3px;
+    }
+
 }

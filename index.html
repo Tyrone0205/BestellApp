@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <div class="page-container">
+    <div id="top" class="page-container">
 
         <!-- HEADER -->
         <header class="site-header">
@@ -233,7 +233,6 @@
             </div>
         </footer>
 
-
         <!-- BESTELLBESTÄTIGUNG -->
         <dialog id="order-dialog" class="order-dialog" aria-labelledby="order-dialog-heading"
             aria-describedby="order-dialog-description">
@@ -258,8 +257,44 @@
 
         </dialog>
 
-
     </div>
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+
+        <!-- HOME -->
+        <a href="#top" class="mobile-nav-item" aria-label="Back to top">
+            <img src="./assets/icons/home.svg" alt="">
+        </a>
+
+        <span class="mobile-nav-item" aria-hidden="true">
+            <img src="./assets/icons/profile.svg" alt="">
+        </span>
+
+        <span class="mobile-nav-item" aria-hidden="true">
+            <img src="./assets/icons/orders.svg" alt="">
+        </span>
+
+        <!-- BASKET -->
+        <button id="mobile-basket-button" class="mobile-nav-item" type="button" aria-label="Open basket"
+            aria-haspopup="dialog" aria-controls="mobile-basket-dialog">
+
+            <img src="./assets/img/shopping_cart.png" alt="">
+
+            <span id="mobile-basket-count" class="mobile-basket-count d_none" aria-hidden="true">0</span>
+        </button>
+
+    </nav>
+
+    <!-- MOBILE BASKET DIALOG -->
+    <dialog id="mobile-basket-dialog" class="mobile-basket-dialog" aria-labelledby="basket-heading">
+
+        <button id="mobile-basket-close" class="mobile-basket-close" type="button" aria-label="Close basket">
+            ×
+        </button>
+
+    </dialog>
+
 </body>
 
 </html>
