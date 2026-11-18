@@ -152,6 +152,15 @@ function openMobileBasket() {
     dialogRef.showModal();
 }
 
+/* Schließt den mobilen Warenkorb. */
+function closeMobileBasket() {
+    const dialogRef = document.getElementById('mobile-basket-dialog');
+
+    if (dialogRef.open) {
+        dialogRef.close();
+    }
+}
+
 // Initialisiert die Website und registriert die Event-Listener.
 function initializeApp() {
     renderMeals();
