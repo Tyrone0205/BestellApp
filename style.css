@@ -706,6 +706,14 @@ footer {
     gap: 26px;
 }
 
+/* LIEFERWAGEN-ICON */
+
+.order-dialog-icon {
+    width: 72px;
+    height: 60px;
+    object-fit: contain;
+}
+
 /* UTILITY-KLASSE ZUM AUSBLENDEN VON HTML-ELEMENTEN */
 
 .d_none {
