@@ -714,6 +714,28 @@ footer {
     object-fit: contain;
 }
 
+/* BESTÄTIGUNGSTEXTE */
+
+.order-dialog-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.order-dialog-text h2 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.order-dialog-text p {
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+
 /* UTILITY-KLASSE ZUM AUSBLENDEN VON HTML-ELEMENTEN */
 
 .d_none {
