@@ -79,6 +79,7 @@ function renderBasket() {
     renderBasketItems();
     updateBasketPrices();
     updateBasketView();
+    updateMobileBasketCount();
 }
 
 // Erhöht oder verringert die Anzahl eines Gerichts.
@@ -103,15 +104,18 @@ function removeFromBasket(mealIndex) {
     renderBasket();
 }
 
-// Öffnet die Bestellbestätigung und leert den Warenkorb.
+/* Öffnet die Bestellbestätigung und leert den Warenkorb. */
 function confirmOrder() {
     if (basket.length === 0) {
         return;
     }
 
+    closeMobileBasket();
     orderDialogRef.showModal();
+
     basket = [];
     renderBasket();
+
     orderDialogTimeout = setTimeout(closeOrderDialog, 10000);
 }
 
@@ -202,6 +206,7 @@ function updateMobileBasketCount() {
 function initializeApp() {
     renderMeals();
     renderBasket();
+    initializeMobileBasket();
 
     document.getElementById('basket-buy-btn').addEventListener('click', confirmOrder);
     document.getElementById('order-dialog-close-id').addEventListener('click', closeOrderDialog);
