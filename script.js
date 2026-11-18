@@ -30,7 +30,7 @@ function addToBasket(mealIndex) {
         });
     }
 
-    updateBasketView();
+    renderBasket();
 }
 
 // Wechselt zwischen leerem und gefülltem Warenkorb.
@@ -80,4 +80,7 @@ function renderBasket() {
 }
 
 // Rendert die Gerichte, sobald das HTML-Dokument vollständig aufgebaut ist.
-document.addEventListener('DOMContentLoaded', renderMeals);
+document.addEventListener('DOMContentLoaded', () => {
+    renderMeals();
+    renderBasket();
+});
