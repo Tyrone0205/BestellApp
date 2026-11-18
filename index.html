@@ -7,6 +7,10 @@
     <title>BestellApp</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" href="./assets/icons/Logo 02.svg" type="image/svg">
+
+    <script src="./script.js" defer></script>
+    <script src="./scripts/db.js" defer></script>
+    <script src="./scripts/template.js" defer></script>
 </head>
 
 <body>
@@ -69,64 +73,7 @@
                         </div>
                     </div>
 
-                    <div class="meal-list">
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/burger_01.jpg"
-                                alt="Veggie mushroom black burger">
-
-                            <div class="meal-card-info">
-                                <h3>Veggie mushroom black burger</h3>
-                                <p>Mixed green salad, Tomatoes, Edamame, Mushrooms</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">16,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/burger_02.jpg" alt="All meat burger">
-
-                            <div class="meal-card-info">
-                                <h3>All meat burger</h3>
-                                <p>Beef, Bacon, Dill pickles, Smoked cheese, Ketchup, BBQ sauce</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">15,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/burger_03.jpg" alt="Beef red burger">
-
-                            <div class="meal-card-info">
-                                <h3>Beef red burger</h3>
-                                <p>Beef, Cheese, Tomatoes, Lettuce, Onion</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">14,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/burger_04.jpg" alt="Big chicken burger">
-
-                            <div class="meal-card-info">
-                                <h3>Big chicken burger</h3>
-                                <p>Chicken, Cheese, Tomatoes, Lettuce, Onion, Bell pepper</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">15,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
+                    <div id="burger-list" class="meal-list">
 
                     </div>
 
@@ -142,64 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="meal-list">
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/pizza_01.jpg" alt="Pizza Margherita">
-
-                            <div class="meal-card-info">
-                                <h3>Pizza Margherita</h3>
-                                <p>Tomato Sauce, Mozzarella</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">11,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/pizza_02.jpg" alt="Pizza Chorizo">
-
-                            <div class="meal-card-info">
-                                <h3>Pizza Chorizo</h3>
-                                <p>Tomato slices, Mozzarella and Chorizo</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">13,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/pizza_03.jpg" alt="Funghi pizza">
-
-                            <div class="meal-card-info">
-                                <h3>Funghi</h3>
-                                <p>Red onion, Olives, Button Mushrooms, Mozzarella</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">12,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/pizza_04.jpg"
-                                alt="Quattro Formaggi with Chicken pizza">
-
-                            <div class="meal-card-info">
-                                <h3>Quattro Formaggi with Chicken</h3>
-                                <p>Chicken, Mozzarella, Gorgonzola, Fontina, Parmigiano Reggiano</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">15,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
+                    <div id="pizza-list" class="meal-list">
 
                     </div>
                 </section>
@@ -213,68 +103,7 @@
                         </div>
                     </div>
 
-                    <div class="meal-list">
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/salat_01.jpg" alt="Warm beef arugula salad">
-
-                            <div class="meal-card-info">
-                                <h3>Warm beef arugula salad</h3>
-                                <p>Beef, Arugula, Field salad, Greek feta, Cherry tomatoes, Sun-dried Tomatoes, Balsamic
-                                    vinegar dressing</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">16,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/salat_02.jpg" alt="Mini green Salad">
-
-                            <div class="meal-card-info">
-                                <h3>Mini green Salad</h3>
-                                <p>Green salad, Cucumber, Carrots, Parsley, Radishes</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">7,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/salat_03.jpg"
-                                alt="Green Salad with sea food">
-
-                            <div class="meal-card-info">
-                                <h3>Green Salad with sea food</h3>
-                                <p>Mixed greens, Cherry tomatoes, Red onion, Mussels, Squid rings, Shrimp, Dijon
-                                    mustard-lemon dressing with dill</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">16,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
-
-                        <article class="meal-card">
-                            <img class="meal-card-image" src="./assets/img/salat_04.jpg"
-                                alt="Vegan green salad with tofu">
-
-                            <div class="meal-card-info">
-                                <h3>Vegan green salad with tofu</h3>
-                                <p>Green salad, Cherry tomatoes, Cucumber, Baby spinach, Edamame, Radishes, Bittercress,
-                                    Tofu, Peanuts</p>
-                            </div>
-
-                            <div class="meal-card-order">
-                                <span class="meal-price">14,90€</span>
-                                <button type="button">Add to basket</button>
-                            </div>
-                        </article>
+                    <div id="salad-list" class="meal-list">
 
                     </div>
                 </section>
@@ -294,13 +123,45 @@
                             Go ahead and choose something delicious!
                         </p>
 
-                        <img src="./assets/img/shopping_cart.png" alt="" class="basket-empty-icon">
+                        <img src="./assets/img/shopping_cart.png" alt="Image of the Shopping-Cart"
+                            class="basket-empty-icon">
+                    </div>
+
+                    <div class="basket-content d_none">
+
+                        <div class="basket-items">
+
+                        </div>
+
+                        <div class="basket-summary">
+
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="basket-subtotal">0,00€</span>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Delivery fee</span>
+                                <span>4,99€</span>
+                            </div>
+
+                            <div class="summary-divider"></div>
+
+                            <div class="summary-row total-row">
+                                <span>Total</span>
+                                <span id="basket-total">0,00€</span>
+                            </div>
+
+                            <button id="basket-buy-btn" class="buy-now-btn" type="button">
+                                Buy now
+                            </button>
+
+                        </div>
+
                     </div>
 
                 </div>
-
             </aside>
-
         </div>
 
         </main>
@@ -317,6 +178,31 @@
                 </button>
             </div>
         </footer>
+
+
+        <!-- BESTELLBESTÄTIGUNG -->
+        <dialog id="order-dialog" class="order-dialog" aria-labelledby="order-dialog-heading"
+            aria-describedby="order-dialog-description">
+
+            <!-- Dialog schließen -->
+            <button class="order-dialog-close" type="button" aria-label="Close order confirmation">
+                ×
+            </button>
+
+            <!-- Bestätigungsinhalt -->
+            <div class="order-dialog-content">
+
+                <img src="./assets/icons/delivery_truck.svg" alt="" class="order-dialog-icon">
+
+                <div class="order-dialog-text">
+                    <h2 id="order-dialog-heading">Order confirmed!</h2>
+                    <p id="order-dialog-description">Your food is on the way!</p>
+                </div>
+
+            </div>
+
+        </dialog>
+
 
     </div>
 </body>
