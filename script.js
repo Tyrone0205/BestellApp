@@ -189,6 +189,15 @@ function initializeMobileBasket() {
     dialogRef.addEventListener('click', handleMobileBasketClick);
 }
 
+/* Aktualisiert die Anzahl im mobilen Warenkorb-Icon. */
+function updateMobileBasketCount() {
+    const count = basket.reduce((total, item) => total + item.quantity, 0);
+    const countRef = document.getElementById('mobile-basket-count');
+
+    countRef.textContent = count;
+    countRef.classList.toggle('d_none', count === 0);
+}
+
 // Initialisiert die Website und registriert die Event-Listener.
 function initializeApp() {
     renderMeals();
