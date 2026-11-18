@@ -167,6 +167,17 @@ function restoreBasket() {
     document.querySelector('.basket-wrapper').appendChild(basketRef);
 }
 
+/* Schließt den Dialog beim Klicken außerhalb. */
+function handleMobileBasketClick(event) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const outsideX = event.clientX < rect.left || event.clientX > rect.right;
+    const outsideY = event.clientY < rect.top || event.clientY > rect.bottom;
+
+    if (outsideX || outsideY) {
+        closeMobileBasket();
+    }
+}
+
 // Initialisiert die Website und registriert die Event-Listener.
 function initializeApp() {
     renderMeals();
