@@ -261,9 +261,9 @@
 
     /* HAMBURGER-MENÜ AUF MOBILE AUSBLENDEN */
 
-    .menu-dropdown {
+    /*.menu-dropdown {
         display: none;
-    }
+    }*/
 
     /* FIXIERTE MOBILE NAVIGATION */
 
@@ -411,9 +411,8 @@
     /* WARENKORB-GERICHTSKARTEN */
 
     .mobile-basket-dialog .basket-item {
-        height: 80px;
+        height: auto;
         min-height: 80px;
-
         padding: 12px;
         gap: 8px;
         flex-shrink: 0;
@@ -442,8 +441,7 @@
     .mobile-basket-dialog .basket-items {
         flex: 0 1 auto;
         height: auto;
-        max-height: calc(3 * 80px + 2 * 8px);
-
+        max-height: none;
         overflow-y: auto;
         gap: 8px;
     }
@@ -489,5 +487,183 @@
         outline-offset: 3px;
     }
 
+
+}
+
+/* HORIZONTALE KATEGORIE-NAVIGATION STANDARDMÄSSIG AUSBLENDEN */
+
+.category-nav-row {
+    display: none;
+}
+
+/* HORIZONTALES AUFKLAPPBARES MENÜ VON 600px BIS 900px */
+
+@media screen and (min-width: 530px) and (max-width: 900px) {
+
+    /* DROPDOWN DARF NICHT ABGESCHNITTEN WERDEN */
+
+    .site-header {
+        overflow: visible;
+        clip-path: none;
+    }
+
+    /* POSITIONIERUNG DER ZWEITEN HEADER-ZEILE */
+
+    .header-content {
+        position: relative;
+    }
+
+    /* HAMBURGER-ICON SICHTBAR LASSEN */
+
+    .menu-dropdown {
+        display: block;
+        position: static;
+        margin-left: auto;
+    }
+
+    /* NAVIGATION STANDARDMÄSSIG ZUKLAPPEN */
+
+    .menu-dropdown:not([open]) .category-nav {
+        display: none;
+    }
+
+    /* HORIZONTALE NAVIGATION UNTER DEM HEADER */
+
+    .menu-dropdown[open] .category-nav {
+        position: absolute;
+        top: 145%;
+        left: 0;
+        right: auto;
+        bottom: auto;
+
+        width: 100%;
+        padding: 12px 16px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 12px;
+
+        background-color: var(--primary-color);
+        border-radius: 0;
+    }
+
+    /* KATEGORIE-LINKS */
+
+    .category-nav a {
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+    /* PLATZ FÜR DIE GEÖFFNETE NAVIGATION */
+
+    .page-container:has(.menu-dropdown[open]) main {
+        padding-top: 64px;
+    }
+
+    /* KATEGORIE-LINKS MIT ICONS */
+
+    .menu-dropdown .category-nav a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        font-size: 16px;
+        white-space: nowrap;
+    }
+
+    /* KATEGORIE-ICONS */
+
+    .menu-dropdown .category-nav a img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+}
+
+
+/* HAMBURGER-MENÜ BIS 785px */
+
+@media screen and (max-width: 529px) {
+
+    /* HEADER DARF DAS DROPDOWN NICHT ABSCHNEIDEN */
+
+    .site-header {
+        overflow: visible;
+        clip-path: none;
+    }
+
+    /* HAMBURGER-MENÜ IM HEADER */
+
+    .menu-dropdown {
+        display: block;
+        position: relative;
+        margin-left: auto;
+        z-index: 1300;
+    }
+
+    /* HAMBURGER-SYMBOL */
+
+    .menu-dropdown summary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 48px;
+        height: 48px;
+
+        position: relative;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .menu-dropdown summary::-webkit-details-marker {
+        display: none;
+    }
+
+
+    /* DROPDOWN ZENTRIERT UNTER DEM HEADER */
+
+    /* DROPDOWN ÜBER DIE GESAMTE HEADERBREITE */
+
+    .menu-dropdown .category-nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: auto;
+        bottom: auto;
+        z-index: 1301;
+
+        width: 100%;
+        transform: none;
+
+        padding: 12px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+
+        background-color: var(--primary-color);
+        border-radius: 0 0 16px 16px;
+    }
+
+    /* KATEGORIE-LINKS UNTEREINANDER */
+
+    .menu-dropdown .category-nav a {
+        width: 100%;
+        min-height: 48px;
+        padding: 8px 16px;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+
+        font-size: 16px;
+    }
 
 }
