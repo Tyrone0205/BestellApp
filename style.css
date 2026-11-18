@@ -637,6 +637,26 @@ footer {
     outline-offset: 3px;
 }
 
+/* BESTELLBESTÄTIGUNG - DIALOG */
+
+.order-dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+
+    width: min(415px, calc(100% - 32px));
+    max-height: calc(100dvh - 32px);
+    padding: 32px 40px;
+
+    border: none;
+    border-radius: 30px;
+
+    background-color: var(--text-primary);
+    color: var(--logo-border);
+
+    text-align: center;
+}
+
 /* UTILITY-KLASSE ZUM AUSBLENDEN VON HTML-ELEMENTEN */
 
 .d_none {
