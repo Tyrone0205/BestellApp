@@ -125,6 +125,25 @@ function confirmOrder() {
     orderDialogTimeout = setTimeout(closeOrderDialog, 2500);
 }
 
+/* Schließt die Bestellbestätigung mit einer kurzen Animation. */
+function closeOrderDialog() {
+    const orderDialogRef = document.getElementById('order-dialog');
+
+    if (!orderDialogRef.open || orderDialogRef.classList.contains('is-closing')) {
+        return;
+    }
+
+    clearTimeout(orderDialogTimeout);
+
+    // Ausblendanimation starten.
+    orderDialogRef.classList.add('is-closing');
+
+    setTimeout(() => {
+        orderDialogRef.close();
+        orderDialogRef.classList.remove('is-closing');
+    }, 250);
+}
+
 
 // Rendert die Gerichte, sobald das HTML-Dokument vollständig aufgebaut ist.
 document.addEventListener('DOMContentLoaded', () => {
