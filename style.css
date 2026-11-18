@@ -672,6 +672,28 @@ footer {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
+/* SCHLIESSEN-BUTTON */
+
+.order-dialog-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    background: transparent;
+    color: var(--logo-border);
+
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.order-dialog-close:focus-visible {
+    outline: 2px solid var(--logo-border);
+    outline-offset: 3px;
+}
 
 /* UTILITY-KLASSE ZUM AUSBLENDEN VON HTML-ELEMENTEN */
 
