@@ -1,5 +1,6 @@
 let basket = [];
 let orderDialogTimeout;
+const orderDialogRef = document.getElementById('order-dialog');
 
 // Rendert sämtliche Gerichte anhand ihres Typs in den passenden HTML-Container.
 function renderMeals() {
@@ -158,5 +159,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .addEventListener('close', () => {
             clearTimeout(orderDialogTimeout);
         });
+
+    /* Schließt den Bestätigungsdialog beim Klicken außerhalb. */
+    orderDialogRef.addEventListener('click', (event) => {
+        const rect = orderDialogRef.getBoundingClientRect();
+
+        if (event.clientX < rect.left || event.clientX > rect.right ||
+            event.clientY < rect.top || event.clientY > rect.bottom) {
+            closeOrderDialog();
+        }
+    });
 });
 
