@@ -5,12 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BestellApp</title>
+
+    <!-- GENERAL STYLES -->
     <link rel="stylesheet" href="./style.css">
+
+    <!-- COMPONENT STYLES -->
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/restaurant.css">
+    <link rel="stylesheet" href="./styles/menu.css">
+    <link rel="stylesheet" href="./styles/basket.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/order-dialog.css">
+
+    <!-- UTILITY STYLES -->
+    <link rel="stylesheet" href="./styles/utilities.css">
+
     <link rel="shortcut icon" href="./assets/icons/Logo 02.svg" type="image/svg">
 
-    <script src="./script.js" defer></script>
     <script src="./scripts/db.js" defer></script>
     <script src="./scripts/template.js" defer></script>
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -22,147 +36,184 @@
 
                 <img class="header-logo" src="./assets/icons/Logo 02.svg" alt="BestellApp Logo">
 
-                <img class="menu-icon" src="./assets/icons/dehaze.svg" alt="" aria-hidden="true">
+
+                <!-- HAMBURGER-MENÜ -->
+                <details class="menu-dropdown">
+
+                    <summary aria-label="Open meal categories">
+                        <img class="menu-icon" src="./assets/icons/dehaze.svg" alt="">
+                    </summary>
+
+
+                    <!-- KATEGORIE-NAVIGATION -->
+                    <nav class="category-nav" aria-label="Meal categories">
+
+                        <a href="#burger-category">
+                            <img src="./assets/img/burger_picture.png" alt="">
+                            Burger & Sandwiches
+                        </a>
+
+                        <a href="#pizza-category">
+                            <img src="./assets/img/pizza_picture.png" alt="">
+                            Pizza (30cm)
+                        </a>
+
+                        <a href="#salad-category">
+                            <img src="./assets/img/salat_picture.png" alt="">
+                            Salad
+                        </a>
+
+                    </nav>
+
+
+                </details>
+
 
             </div>
         </header>
-        <!-- HERO SECTION -->
-        <section class="restaurant-hero" aria-labelledby="restaurant-name">
+        <main>
+            <!-- HERO SECTION -->
+            <section class="restaurant-hero" aria-labelledby="restaurant-name">
 
-            <div class="hero-image"></div>
+                <div class="hero-image"></div>
 
-            <div class="restaurant-info">
+                <div class="restaurant-info">
 
-                <img class="restaurant-logo" src="./assets/img/burger_hero.png" alt="BurgerHouse Logo">
+                    <img class="restaurant-logo" src="./assets/img/burger_hero.png" alt="BurgerHouse Logo">
 
-                <div class="restaurant-heading">
+                    <div class="restaurant-heading">
 
-                    <h1 id="restaurant-name">
-                        <span>Burger</span>House
-                    </h1>
+                        <h1 id="restaurant-name">
+                            <span>Burger</span>House
+                        </h1>
 
-                    <div class="restaurant-rating" aria-label="Rating: 4.1 out of 5 stars, based on 317 reviews">
+                        <div class="restaurant-rating" aria-label="Rating: 4.1 out of 5 stars, based on 317 reviews">
 
-                        <span aria-hidden="true">★</span>
-                        <span>4,1</span>
-                        <span class="rating-count">(317)</span>
+                            <span aria-hidden="true">★</span>
+                            <span>4,1</span>
+                            <span class="rating-count">(317)</span>
 
+                        </div>
                     </div>
+
+                    <p class="restaurant-description">
+                        The best of Burgers, Pizza, and Greens, all in one great place.
+                    </p>
+
+                    <!-- LIEFERINFORMATIONEN -->
+                    <p class="restaurant-delivery">
+                        Delivery fee: 4,99€
+                    </p>
+
                 </div>
-
-                <p class="restaurant-description">
-                    The best of Burgers, Pizza, and Greens, all in one great place.
-                </p>
-
-            </div>
-
-        </section>
-
-        <!-- SPEISEKARTE UND WARENKORB -->
-        <div class="menu-and-basket">
-
-            <!-- SPEISEKARTE -->
-            <section class="menu-section" aria-label="Our menu">
-                <!-- BURGER & SANDWICHES -->
-                <section class="meal-category" aria-labelledby="burger-heading">
-
-                    <div class="meal-category-heading">
-                        <div class="meal-category-heading-content">
-                            <img src="./assets/img/burger_picture.png" alt="">
-                            <h2 id="burger-heading">Burger & Sandwiches</h2>
-                        </div>
-                    </div>
-
-                    <div id="burger-list" class="meal-list">
-
-                    </div>
-
-                </section>
-
-                <!-- PIZZA -->
-                <section class="meal-category" aria-labelledby="pizza-heading">
-
-                    <div class="meal-category-heading">
-                        <div class="meal-category-heading-content">
-                            <img src="./assets/img/pizza_picture.png" alt="">
-                            <h2 id="pizza-heading">Pizza (30cm)</h2>
-                        </div>
-                    </div>
-
-                    <div id="pizza-list" class="meal-list">
-
-                    </div>
-                </section>
-
-                <!-- SALAD -->
-                <section class="meal-category" aria-labelledby="salad-heading">
-                    <div class="meal-category-heading">
-                        <div class="meal-category-heading-content">
-                            <img src="./assets/img/salat_picture.png" alt="">
-                            <h2 id="salad-heading">Salad</h2>
-                        </div>
-                    </div>
-
-                    <div id="salad-list" class="meal-list">
-
-                    </div>
-                </section>
 
             </section>
 
-            <!-- STICKY WARENKORB -->
-            <aside class="basket-wrapper" aria-labelledby="basket-heading">
+            <!-- SPEISEKARTE UND WARENKORB -->
+            <div class="menu-and-basket">
 
-                <div class="basket">
+                <!-- SPEISEKARTE -->
+                <section class="menu-section" aria-label="Our menu">
+                    <!-- BURGER & SANDWICHES -->
+                    <section class="meal-category" id="burger-category" aria-labelledby="burger-heading">
 
-                    <h2 id="basket-heading">Your Basket</h2>
+                        <div class="meal-category-heading">
+                            <div class="meal-category-heading-content">
+                                <img src="./assets/img/burger_picture.png" alt="">
+                                <h2 id="burger-heading">Burger & Sandwiches</h2>
+                            </div>
+                        </div>
 
-                    <div class="basket-empty">
-                        <p>
-                            Nothing here yet.
-                            Go ahead and choose something delicious!
-                        </p>
-
-                        <img src="./assets/img/shopping_cart.png" alt="Image of the Shopping-Cart"
-                            class="basket-empty-icon">
-                    </div>
-
-                    <div class="basket-content d_none">
-
-                        <div class="basket-items">
+                        <div id="burger-list" class="meal-list">
 
                         </div>
 
-                        <div class="basket-summary">
+                    </section>
 
-                            <div class="summary-row">
-                                <span>Subtotal</span>
-                                <span id="basket-subtotal">0,00€</span>
+                    <!-- PIZZA -->
+                    <section class="meal-category" id="pizza-category" aria-labelledby="pizza-heading">
+
+                        <div class="meal-category-heading">
+                            <div class="meal-category-heading-content">
+                                <img src="./assets/img/pizza_picture.png" alt="">
+                                <h2 id="pizza-heading">Pizza (30cm)</h2>
+                            </div>
+                        </div>
+
+                        <div id="pizza-list" class="meal-list">
+
+                        </div>
+                    </section>
+
+                    <!-- SALAD -->
+                    <section class="meal-category" id="salad-category" aria-labelledby="salad-heading">
+                        <div class="meal-category-heading">
+                            <div class="meal-category-heading-content">
+                                <img src="./assets/img/salat_picture.png" alt="">
+                                <h2 id="salad-heading">Salad</h2>
+                            </div>
+                        </div>
+
+                        <div id="salad-list" class="meal-list">
+
+                        </div>
+                    </section>
+
+                </section>
+
+                <!-- STICKY WARENKORB -->
+                <aside class="basket-wrapper" aria-labelledby="basket-heading">
+
+                    <div class="basket">
+
+                        <h2 id="basket-heading">Your Basket</h2>
+
+                        <div class="basket-empty">
+                            <p>
+                                Nothing here yet.
+                                Go ahead and choose something delicious!
+                            </p>
+
+                            <img src="./assets/img/shopping_cart.png" alt="Image of the Shopping-Cart"
+                                class="basket-empty-icon">
+                        </div>
+
+                        <div class="basket-content d_none">
+
+                            <div class="basket-items">
+
                             </div>
 
-                            <div class="summary-row">
-                                <span>Delivery fee</span>
-                                <span>4,99€</span>
+                            <div class="basket-summary">
+
+                                <div class="summary-row">
+                                    <span>Subtotal</span>
+                                    <span id="basket-subtotal">0,00€</span>
+                                </div>
+
+                                <div class="summary-row">
+                                    <span>Delivery fee</span>
+                                    <span>4,99€</span>
+                                </div>
+
+                                <div class="summary-divider"></div>
+
+                                <div class="summary-row total-row">
+                                    <span>Total</span>
+                                    <span id="basket-total">0,00€</span>
+                                </div>
+
+                                <button id="basket-buy-btn" class="buy-now-btn" type="button">
+                                    Buy now
+                                </button>
+
                             </div>
-
-                            <div class="summary-divider"></div>
-
-                            <div class="summary-row total-row">
-                                <span>Total</span>
-                                <span id="basket-total">0,00€</span>
-                            </div>
-
-                            <button id="basket-buy-btn" class="buy-now-btn" type="button">
-                                Buy now
-                            </button>
 
                         </div>
 
                     </div>
-
-                </div>
-            </aside>
-        </div>
+                </aside>
+            </div>
 
         </main>
 
@@ -185,7 +236,8 @@
             aria-describedby="order-dialog-description">
 
             <!-- Dialog schließen -->
-            <button id="order-dialog-close-id" class="order-dialog-close" type="button" aria-label="Close order confirmation">
+            <button id="order-dialog-close-id" class="order-dialog-close" type="button"
+                aria-label="Close order confirmation">
                 ×
             </button>
 

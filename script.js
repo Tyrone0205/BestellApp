@@ -1,7 +1,8 @@
 let basket = [];
 let orderDialogTimeout;
+const orderDialogRef = document.getElementById('order-dialog');
 
-// Rendert sämtliche Gerichte anhand ihres Typs in den passenden HTML-Container.
+// Rendert sämtliche Gerichte in den passenden HTML-Container.
 function renderMeals() {
     const mealTypes = ['burger', 'pizza', 'salad'];
 
@@ -11,24 +12,19 @@ function renderMeals() {
 
     for (let mealIndex = 0; mealIndex < meals.length; mealIndex++) {
         const meal = meals[mealIndex];
-
-        const mealContainerRef = document.getElementById(`${meal.type}-list`);
-
-        mealContainerRef.insertAdjacentHTML('beforeend', getMealTemplate(meal, mealIndex));
+        const containerRef = document.getElementById(`${meal.type}-list`);
+        containerRef.insertAdjacentHTML('beforeend', getMealTemplate(meal, mealIndex));
     }
 }
 
-// Fügt ein Gericht zum Warenkorb hinzu oder erhöht dessen Anzahl.
+// Fügt ein Gericht hinzu oder erhöht die vorhandene Anzahl.
 function addToBasket(mealIndex) {
     const existingMeal = basket.find(item => item.mealIndex === mealIndex);
 
     if (existingMeal) {
         existingMeal.quantity++;
     } else {
-        basket.push({
-            mealIndex: mealIndex,
-            quantity: 1
-        });
+        basket.push({ mealIndex: mealIndex, quantity: 1 });
     }
 
     renderBasket();
@@ -36,51 +32,56 @@ function addToBasket(mealIndex) {
 
 // Wechselt zwischen leerem und gefülltem Warenkorb.
 function updateBasketView() {
-    const basketEmptyRef = document.querySelector('.basket-empty');
-    const basketContentRef = document.querySelector('.basket-content');
+    const isEmpty = basket.length === 0;
 
-    if (basket.length === 0) {
-        basketEmptyRef.classList.remove('d_none');
-        basketContentRef.classList.add('d_none');
-    } else {
-        basketEmptyRef.classList.add('d_none');
-        basketContentRef.classList.remove('d_none');
-    }
+    document.querySelector('.basket-empty').classList.toggle('d_none', !isEmpty);
+    document.querySelector('.basket-content').classList.toggle('d_none', isEmpty);
 }
 
-/* Formatiert einen Preis in Euro. */
+// Formatiert einen Preis in Euro.
 function formatPrice(price) {
     return price.toFixed(2).replace('.', ',') + '€';
 }
 
-/* Rendert sämtliche Gerichte im Warenkorb. */
-function renderBasket() {
+// Rendert die HTML-Karten der Gerichte im Warenkorb.
+function renderBasketItems() {
     const basketItemsRef = document.querySelector('.basket-items');
-
     basketItemsRef.innerHTML = '';
 
+    for (let basketItem of basket) {
+        basketItemsRef.innerHTML += getBasketItemTemplate(basketItem);
+    }
+}
+
+// Berechnet die Zwischensumme aller Gerichte.
+function calculateSubtotal() {
     let subtotal = 0;
 
-    for (let basketIndex = 0; basketIndex < basket.length; basketIndex++) {
-        const basketItem = basket[basketIndex];
-        const meal = meals[basketItem.mealIndex];
-
-        basketItemsRef.innerHTML += getBasketItemTemplate(basketItem);
-
-        subtotal += meal.price * basketItem.quantity;
+    for (let basketItem of basket) {
+        subtotal += meals[basketItem.mealIndex].price * basketItem.quantity;
     }
 
-    const deliveryFee = 4.99;
-    const total = subtotal + deliveryFee;
+    return subtotal;
+}
+
+// Aktualisiert die Preisübersicht und den Bestellbutton.
+function updateBasketPrices() {
+    const subtotal = calculateSubtotal();
+    const total = subtotal + 4.99;
 
     document.getElementById('basket-subtotal').textContent = formatPrice(subtotal);
     document.getElementById('basket-total').textContent = formatPrice(total);
     document.getElementById('basket-buy-btn').textContent = `Buy now (${formatPrice(total)})`;
+}
 
+// Aktualisiert den gesamten Warenkorb.
+function renderBasket() {
+    renderBasketItems();
+    updateBasketPrices();
     updateBasketView();
 }
 
-/* Erhöht oder verringert die Anzahl eines Gerichts. */
+// Erhöht oder verringert die Anzahl eines Gerichts.
 function changeBasketQuantity(mealIndex, change) {
     const basketItem = basket.find(item => item.mealIndex === mealIndex);
 
@@ -89,74 +90,70 @@ function changeBasketQuantity(mealIndex, change) {
     }
 
     basketItem.quantity += change;
-
     if (basketItem.quantity <= 0) {
         removeFromBasket(mealIndex);
         return;
     }
-
     renderBasket();
 }
 
-/* Entfernt ein Gericht vollständig aus dem Warenkorb. */
+// Entfernt ein Gericht vollständig aus dem Warenkorb.
 function removeFromBasket(mealIndex) {
     basket = basket.filter(item => item.mealIndex !== mealIndex);
-
     renderBasket();
 }
 
-/* Öffnet die Bestellbestätigung und leert den Warenkorb. */
+// Öffnet die Bestellbestätigung und leert den Warenkorb.
 function confirmOrder() {
     if (basket.length === 0) {
         return;
     }
 
-    const orderDialogRef = document.getElementById('order-dialog');
-
     orderDialogRef.showModal();
-
     basket = [];
     renderBasket();
-
     orderDialogTimeout = setTimeout(closeOrderDialog, 10000);
 }
 
-/* Schließt die Bestellbestätigung mit einer kurzen Animation. */
+// Startet die Schließanimation des Bestätigungsdialogs.
 function closeOrderDialog() {
-    const orderDialogRef = document.getElementById('order-dialog');
-
     if (!orderDialogRef.open || orderDialogRef.classList.contains('is-closing')) {
         return;
     }
 
     clearTimeout(orderDialogTimeout);
-
-    // Ausblendanimation starten.
     orderDialogRef.classList.add('is-closing');
-
-    setTimeout(() => {
-        orderDialogRef.close();
-        orderDialogRef.classList.remove('is-closing');
-    }, 250);
+    setTimeout(finishCloseOrderDialog, 250);
 }
 
-/* Initialisiert die Speisekarte, den Warenkorb und die Dialog-Events. */
-document.addEventListener('DOMContentLoaded', () => {
+// Schließt den Dialog nach der Animation vollständig.
+function finishCloseOrderDialog() {
+    orderDialogRef.close();
+    orderDialogRef.classList.remove('is-closing');
+}
+
+// Prüft, ob außerhalb des Bestätigungsdialogs geklickt wurde.
+function handleOrderDialogClick(event) {
+    const rect = orderDialogRef.getBoundingClientRect();
+    const outsideX = event.clientX < rect.left || event.clientX > rect.right;
+    const outsideY = event.clientY < rect.top || event.clientY > rect.bottom;
+
+    if (outsideX || outsideY) {
+        closeOrderDialog();
+    }
+}
+
+// Initialisiert die Website und registriert die Event-Listener.
+function initializeApp() {
     renderMeals();
     renderBasket();
 
-    // Bestellung abschließen.
-    document.getElementById('basket-buy-btn')
-        .addEventListener('click', confirmOrder);
+    document.getElementById('basket-buy-btn').addEventListener('click', confirmOrder);
+    document.getElementById('order-dialog-close-id').addEventListener('click', closeOrderDialog);
 
-    // Bestätigungsdialog manuell schließen.
-    document.getElementById('order-dialog-close-id')
-        .addEventListener('click', closeOrderDialog);
+    orderDialogRef.addEventListener('click', handleOrderDialogClick);
+    orderDialogRef.addEventListener('close', () => clearTimeout(orderDialogTimeout));
+}
 
-    // Auch beim Schließen mit Escape den Timer aufräumen.
-    document.getElementById('order-dialog')
-        .addEventListener('close', () => {
-            clearTimeout(orderDialogTimeout);
-        });
-});
-
+// Startet die Initialisierung, sobald der DOM geladen wurde.
+document.addEventListener('DOMContentLoaded', initializeApp);
