@@ -113,14 +113,11 @@ function confirmOrder() {
 
     const orderDialogRef = document.getElementById('order-dialog');
 
-    // Bestellbestätigung anzeigen.
     orderDialogRef.showModal();
 
-    // Warenkorb zurücksetzen und Anzeige aktualisieren.
     basket = [];
     renderBasket();
 
-    // Dialog nach 2,5 Sekunden automatisch schließen.
     orderDialogTimeout = setTimeout(closeOrderDialog, 10000);
 }
 
