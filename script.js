@@ -1,4 +1,5 @@
 let basket = [];
+let orderDialogTimeout;
 
 // Rendert sämtliche Gerichte anhand ihres Typs in den passenden HTML-Container.
 function renderMeals() {
@@ -103,6 +104,25 @@ function removeFromBasket(mealIndex) {
     basket = basket.filter(item => item.mealIndex !== mealIndex);
 
     renderBasket();
+}
+
+/* Öffnet die Bestellbestätigung und leert den Warenkorb. */
+function confirmOrder() {
+    if (basket.length === 0) {
+        return;
+    }
+
+    const orderDialogRef = document.getElementById('order-dialog');
+
+    // Bestellbestätigung anzeigen.
+    orderDialogRef.showModal();
+
+    // Warenkorb zurücksetzen und Anzeige aktualisieren.
+    basket = [];
+    renderBasket();
+
+    // Dialog nach 2,5 Sekunden automatisch schließen.
+    orderDialogTimeout = setTimeout(closeOrderDialog, 2500);
 }
 
 
