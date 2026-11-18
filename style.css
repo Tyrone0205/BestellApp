@@ -254,6 +254,19 @@ body {
     text-align: center;
 }
 
+/* LIEFERINFORMATIONEN */
+
+.restaurant-delivery {
+    margin-top: 12px;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+
+    color: var(--text-primary);
+}
+
 /* SPEISEKARTE */
 
 .menu-section {
@@ -280,7 +293,7 @@ body {
     max-width: 1200px;
     min-height: 96px;
     margin: 0 auto;
-    padding-left: 40px;
+    padding-left: 120px;
 
     display: flex;
     align-items: center;
@@ -307,7 +320,7 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 24px 0 56px;
+    padding: 24px 0 56px 120px;
 
     display: flex;
     flex-direction: column;
