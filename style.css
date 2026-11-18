@@ -644,7 +644,7 @@ footer {
     inset: 0;
     margin: auto;
 
-    width: min(415px, calc(100% - 32px));
+    width: min(425px, calc(100% - 32px));
     max-height: calc(100dvh - 32px);
     padding: 32px 40px;
 
@@ -703,15 +703,15 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 26px;
 }
 
 /* LIEFERWAGEN-ICON */
 
 .order-dialog-icon {
-    width: 72px;
-    height: 60px;
+    width: 90px;
+    height: 70px;
     object-fit: contain;
+    transform: scaleX(-1);
 }
 
 /* BESTÄTIGUNGSTEXTE */

@@ -80,7 +80,6 @@ function renderBasket() {
     updateBasketView();
 }
 
-
 /* Erhöht oder verringert die Anzahl eines Gerichts. */
 function changeBasketQuantity(mealIndex, change) {
     const basketItem = basket.find(item => item.mealIndex === mealIndex);
@@ -122,7 +121,7 @@ function confirmOrder() {
     renderBasket();
 
     // Dialog nach 2,5 Sekunden automatisch schließen.
-    orderDialogTimeout = setTimeout(closeOrderDialog, 2500);
+    orderDialogTimeout = setTimeout(closeOrderDialog, 10000);
 }
 
 /* Schließt die Bestellbestätigung mit einer kurzen Animation. */
@@ -144,9 +143,23 @@ function closeOrderDialog() {
     }, 250);
 }
 
-
-// Rendert die Gerichte, sobald das HTML-Dokument vollständig aufgebaut ist.
+/* Initialisiert die Speisekarte, den Warenkorb und die Dialog-Events. */
 document.addEventListener('DOMContentLoaded', () => {
     renderMeals();
     renderBasket();
+
+    // Bestellung abschließen.
+    document.getElementById('basket-buy-btn')
+        .addEventListener('click', confirmOrder);
+
+    // Bestätigungsdialog manuell schließen.
+    document.getElementById('order-dialog-close-id')
+        .addEventListener('click', closeOrderDialog);
+
+    // Auch beim Schließen mit Escape den Timer aufräumen.
+    document.getElementById('order-dialog')
+        .addEventListener('close', () => {
+            clearTimeout(orderDialogTimeout);
+        });
 });
+
