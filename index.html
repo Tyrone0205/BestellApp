@@ -130,7 +130,7 @@
                     <div class="basket-content d_none">
 
                         <div class="basket-items">
-                            
+
                         </div>
 
                         <div class="basket-summary">
@@ -178,6 +178,31 @@
                 </button>
             </div>
         </footer>
+
+
+        <!-- BESTELLBESTÄTIGUNG -->
+        <dialog id="order-dialog" class="order-dialog" aria-labelledby="order-dialog-heading"
+            aria-describedby="order-dialog-description">
+
+            <!-- Dialog schließen -->
+            <button class="order-dialog-close" type="button" aria-label="Close order confirmation">
+                ×
+            </button>
+
+            <!-- Bestätigungsinhalt -->
+            <div class="order-dialog-content">
+
+                <img src="./assets/icons/delivery_truck.svg" alt="" class="order-dialog-icon">
+
+                <div class="order-dialog-text">
+                    <h2 id="order-dialog-heading">Order confirmed!</h2>
+                    <p id="order-dialog-description">Your food is on the way!</p>
+                </div>
+
+            </div>
+
+        </dialog>
+
 
     </div>
 </body>
