@@ -161,6 +161,12 @@ function closeMobileBasket() {
     }
 }
 
+/* Verschiebt den Warenkorb zurück in seine Desktop-Spalte. */
+function restoreBasket() {
+    const basketRef = document.querySelector('.basket');
+    document.querySelector('.basket-wrapper').appendChild(basketRef);
+}
+
 // Initialisiert die Website und registriert die Event-Listener.
 function initializeApp() {
     renderMeals();
