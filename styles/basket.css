@@ -1,0 +1,292 @@
+/* WARENKORB-SPALTE IM FLEXBOX-LAYOUT */
+
+.basket-wrapper {
+    flex: 0 0 435px;
+}
+
+/* STICKY WARENKORB */
+
+.basket {
+    position: sticky;
+    top: 144px;
+
+    width: 100%;
+    height: min(794px, calc(100dvh - 160px));
+
+    padding: 48px 24px 32px;
+
+    background-color: var(--text-primary);
+    color: var(--logo-border);
+
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* WARENKORB ÜBERSCHRIFT */
+
+.basket h2 {
+    font-family: 'Palanquin', Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+/* LEERER WARENKORB */
+
+.basket-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    margin-top: 16px;
+}
+
+.basket-empty p {
+    width: 100%;
+    max-width: 387px;
+
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* EINKAUFSWAGEN ICON */
+
+.basket-empty-icon {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+/* GEFÜLLTER WARENKORB */
+
+.basket-content {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+/* SCROLLBARER BEREICH FÜR WARENKORB-GERICHTE */
+
+.basket-items {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    flex: 1;
+    min-height: 0;
+    max-height: 411px;
+
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* SCROLLBAR IM WARENKORB */
+
+.basket-items::-webkit-scrollbar {
+    width: 4px;
+}
+
+.basket-items::-webkit-scrollbar-thumb {
+    background-color: var(--logo-border);
+    border-radius: 10px;
+}
+
+/* EINZELNE WARENKORB-KARTE */
+
+.basket-item {
+    width: 100%;
+    min-height: 129px;
+    flex-shrink: 0;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    background-color: var(--logo-border);
+    color: var(--text-primary);
+
+    border-radius: 20px;
+}
+
+/* OBERER BEREICH DER WARENKORB-KARTE */
+
+.basket-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* GERICHTNAME UND ANZAHL */
+
+.basket-item-top h3 {
+    flex: 1;
+    min-width: 0;
+
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* UNTERER BEREICH DER WARENKORB-KARTE */
+
+.basket-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* MENGENANZEIGE MIT PLUS- UND MINUSBUTTON */
+
+.basket-quantity {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* BUTTONS ZUM ÄNDERN DER ANZAHL */
+
+.basket-quantity button {
+    min-width: 24px;
+    min-height: 26px;
+
+    padding: 0;
+    border: none;
+
+    background: transparent;
+    color: inherit;
+
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.basket-quantity button:hover {
+    color: var(--primary-color);
+}
+
+/* BUTTON ZUM ENTFERNEN EINES GERICHTS */
+
+.basket-delete-btn {
+    padding: 0;
+    border: none;
+
+    background: transparent;
+    color: inherit;
+
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.basket-delete-btn img {
+    width: 16px;
+    height: 18px;
+    display: block;
+}
+
+/* TASTATURFOKUS DER WARENKORB-BUTTONS */
+
+.basket-delete-btn:focus-visible,
+.basket-quantity button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+/* GESAMTPREIS EINES GERICHTS */
+
+.basket-item-price {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* PREISÜBERSICHT DES WARENKORBS */
+
+.basket-summary {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ZEILE FÜR ZWISCHENSUMME UND LIEFERGEBÜHR */
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* TRENNLINIE VOR DEM GESAMTPREIS */
+
+.summary-divider {
+    width: 100%;
+    height: 2px;
+    background-color: var(--logo-border);
+}
+
+/* GESAMTPREIS */
+
+.total-row {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* BESTELLBUTTON */
+
+.buy-now-btn {
+    margin-top: 8px;
+    width: 100%;
+    min-height: 52px;
+
+    border: none;
+    border-radius: 999px;
+
+    background-color: var(--primary-color);
+    color: var(--text-secondary);
+
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.buy-now-btn:hover {
+    opacity: 0.9;
+}
+
+.buy-now-btn:focus-visible {
+    outline: 2px solid var(--logo-border);
+    outline-offset: 3px;
+}

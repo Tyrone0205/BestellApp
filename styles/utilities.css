@@ -1,0 +1,14 @@
+/* UTILITY-KLASSE ZUM AUSBLENDEN VON HTML-ELEMENTEN */
+
+.d_none {
+    display: none;
+}
+
+/* ORANGE HINTERGRÜNDE ÜBER DIE GESAMTE BILDSCHIRMBREITE */
+
+.meal-category-heading,
+footer {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 0 100vmax var(--primary-color);
+    clip-path: inset(0 -100vmax);
+}
