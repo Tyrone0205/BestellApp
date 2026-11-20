@@ -1,7 +1,87 @@
 
 let basket = [];
 let orderDialogTimeout;
+
+const STORAGE_KEY = 'bestellAppData';
 const orderDialogRef = document.getElementById('order-dialog');
+
+
+// Speichert sämtliche Gerichte und den Warenkorb im LocalStorage.
+function saveDataToLocalStorage() {
+    const data = {
+        meals: meals,
+        basket: basket
+    };
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+
+// Prüft, ob ein gespeichertes Gericht gültige Eigenschaften besitzt.
+function isValidMeal(meal) {
+    if (meal === null || typeof meal !== 'object') return false;
+
+    return typeof meal.name === 'string'
+        && typeof meal.description === 'string'
+        && typeof meal.type === 'string'
+        && typeof meal.picture === 'string'
+        && typeof meal.price === 'number'
+        && ['burger', 'pizza', 'salad'].includes(meal.type);
+}
+
+
+// Stellt die gespeicherten Gerichte aus dem LocalStorage wieder her.
+function loadStoredMeals(storedMeals) {
+    if (!Array.isArray(storedMeals) || storedMeals.length === 0) return;
+
+    for (let meal of storedMeals) {
+        if (!isValidMeal(meal)) return;
+    }
+
+    meals.length = 0;
+
+    for (let meal of storedMeals) {
+        meals.push(meal);
+    }
+}
+
+
+// Prüft, ob ein gespeicherter Warenkorbeintrag gültig ist.
+function isValidBasketItem(item) {
+    if (item === null || typeof item !== 'object') return false;
+
+    return Number.isInteger(item.mealIndex)
+        && item.mealIndex >= 0
+        && item.mealIndex < meals.length
+        && Number.isInteger(item.quantity)
+        && item.quantity > 0;
+}
+
+
+// Stellt den gespeicherten Warenkorb wieder her.
+function loadStoredBasket(storedBasket) {
+    if (!Array.isArray(storedBasket)) return;
+
+    basket = storedBasket.filter(isValidBasketItem);
+}
+
+
+// Lädt Gerichte und Warenkorb aus dem LocalStorage.
+function loadDataFromLocalStorage() {
+    const storedData = localStorage.getItem(STORAGE_KEY);
+    if (!storedData) return;
+
+    try {
+        const data = JSON.parse(storedData);
+        if (data === null || typeof data !== 'object') return;
+
+        loadStoredMeals(data.meals);
+        loadStoredBasket(data.basket);
+    } catch (error) {
+        localStorage.removeItem(STORAGE_KEY);
+    }
+}
+
 
 // Rendert sämtliche Gerichte in den passenden HTML-Container.
 function renderMeals() {
@@ -75,13 +155,14 @@ function updateBasketPrices() {
     document.getElementById('basket-buy-btn').textContent = `Buy now (${formatPrice(total)})`;
 }
 
-// Aktualisiert den gesamten Warenkorb.
+// Aktualisiert den gesamten Warenkorb und speichert die Daten.
 function renderBasket() {
     renderBasketItems();
     updateBasketPrices();
     updateBasketView();
     updateBasketItemsHeight();
     updateMobileBasketCount();
+    saveDataToLocalStorage();
 }
 
 // Erhöht oder verringert die Anzahl eines Gerichts.
@@ -254,6 +335,7 @@ function initializeResponsiveBasketEvents() {
 
 // Initialisiert die Website und registriert die Event-Listener.
 function initializeApp() {
+    loadDataFromLocalStorage();
     renderMeals();
     renderBasket();
     initializeMobileBasket();
