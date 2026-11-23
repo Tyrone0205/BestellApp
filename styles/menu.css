@@ -149,3 +149,9 @@
     flex: 1;
     min-width: 0;
 }
+
+/* Hervorhebung beim Hinzufügen und bei bereits ausgewählten Gerichten */
+.meal-add-button:hover,
+.meal-add-button.is-added {
+    color: var(--primary-color);
+}
