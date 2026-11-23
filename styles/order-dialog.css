@@ -114,3 +114,10 @@
     opacity: 0;
     transition: opacity 250ms ease-in;
 }
+
+/* Blendet den Desktop-Warenkorb während der Bestellbestätigung aus. */
+@media screen and (min-width: 901px) {
+    body:has(#order-dialog[open]) .basket-wrapper {
+        visibility: hidden;
+    }
+}
