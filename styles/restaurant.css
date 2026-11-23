@@ -49,7 +49,9 @@
     margin-top: 16px;
 }
 
+/* Restaurantüberschrift BurgerHouse */
 .restaurant-heading h1 {
+    font-family: 'Palanquin Dark', sans-serif;
     font-size: 48px;
     font-weight: 700;
     line-height: 1.2;
