@@ -108,18 +108,22 @@ function calculateBasketItemsHeight(items, gap) {
     return height + Math.max(items.length - 1, 0) * gap;
 }
 
+
 // Passt den Scrollbereich an maximal drei vollständige Gerichte an.
 function updateBasketItemsHeight() {
     const basketItemsRef = document.querySelector('.basket-items');
-
     if (basketItemsRef.offsetWidth === 0) return;
 
+    const styles = getComputedStyle(basketItemsRef);
     const items = Array.from(basketItemsRef.children).slice(0, 3);
-    const gap = parseFloat(getComputedStyle(basketItemsRef).rowGap) || 0;
-    const height = calculateBasketItemsHeight(items, gap);
+    const gap = parseFloat(styles.rowGap) || 0;
+    const paddingTop = parseFloat(styles.paddingTop) || 0;
+    const paddingBottom = parseFloat(styles.paddingBottom) || 0;
 
-    basketItemsRef.style.maxHeight = `${height}px`;
+    const height = calculateBasketItemsHeight(items, gap);
+    basketItemsRef.style.maxHeight = `${height + paddingTop + paddingBottom + 2}px`;
 }
+
 
 // Aktualisiert die Warenkorb-Scrollhöhe im nächsten Animationsframe.
 function scheduleBasketHeightUpdate() {
