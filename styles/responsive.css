@@ -239,6 +239,21 @@
         gap: 8px;
     }
 
+     /* Copyright */
+    .footer-content > :nth-child(1) {
+        order: 3;
+    }
+
+    /* Imprint */
+    .footer-content > :nth-child(2) {
+        order: 1;
+    }
+
+    /* Cookie Preferences */
+    .footer-content > :nth-child(3) {
+        order: 2;
+    }
+
     .footer-content p,
     .footer-content a,
     .footer-content button {
