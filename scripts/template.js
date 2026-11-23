@@ -12,7 +12,12 @@ function getMealTemplate(meal, mealIndex) {
 
                 <div class="meal-card-order">
                     <span class="meal-price">${meal.price.toFixed(2).replace('.', ',')}€</span>
-                    <button type="button" onclick="addToBasket(${mealIndex})">Add to basket</button>
+                    <button
+                        class="meal-add-button"
+                        data-meal-index="${mealIndex}"
+                        onclick="addToBasket(${mealIndex})">
+                        Add to basket
+                    </button>
                 </div>
             </article>`;
 }
@@ -45,8 +50,8 @@ function getBasketItemTemplate(basketItem) {
                 <div class="basket-quantity">
 
                     ${basketItem.quantity === 1
-                        ? deleteButton
-                        : `<button type="button"
+            ? deleteButton
+            : `<button type="button"
                                    onclick="changeBasketQuantity(${basketItem.mealIndex}, -1)"
                                    aria-label="Decrease quantity">−</button>`}
 

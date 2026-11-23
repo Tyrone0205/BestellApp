@@ -62,6 +62,7 @@ function renderBasket() {
     updateBasketView();
     updateBasketItemsHeight();
     updateMobileBasketCount();
+    updateMealButtons();
     saveDataToLocalStorage();
 }
 
@@ -123,4 +124,17 @@ function updateBasketItemsHeight() {
 // Aktualisiert die Warenkorb-Scrollhöhe im nächsten Animationsframe.
 function scheduleBasketHeightUpdate() {
     requestAnimationFrame(updateBasketItemsHeight);
+}
+
+// Aktualisiert den Buttontext und Zustand der Gerichte.
+function updateMealButtons() {
+    const buttons = document.querySelectorAll('.meal-add-button');
+
+    for (const button of buttons) {
+        const mealIndex = Number(button.dataset.mealIndex);
+        const basketItem = basket.find(item => item.mealIndex === mealIndex);
+
+        button.textContent = basketItem ? `Added ${basketItem.quantity}` : 'Add to basket';
+        button.classList.toggle('is-added', Boolean(basketItem));
+    }
 }
